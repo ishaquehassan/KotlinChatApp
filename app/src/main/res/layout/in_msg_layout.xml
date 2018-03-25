@@ -5,10 +5,20 @@
     android:orientation="vertical">
 
         <TextView
+            android:id="@+id/senderEmailTextTv"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#999"/>
+
+        <TextView
             android:id="@+id/msgTextTv"
             android:background="@drawable/in_msg_bg"
             android:textColor="#fff"
-            android:layout_margin="7.5dp"
+            android:layout_marginStart="7.5dp"
+            android:layout_marginEnd="7.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="7.5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="7dp"

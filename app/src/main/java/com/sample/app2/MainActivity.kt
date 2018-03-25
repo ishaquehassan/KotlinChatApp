@@ -1,5 +1,6 @@
 package com.sample.app2
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     var auth:FirebaseAuth? = null
+    var progressMsg:ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,12 @@ class MainActivity : AppCompatActivity() {
 
         if(auth?.currentUser != null){
             gotoChat()
+            return
         }
+
+        progressMsg = ProgressDialog(this)
+        progressMsg?.setCancelable(false)
+        progressMsg?.setMessage("Authenticating... Please wait")
 
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
@@ -55,7 +62,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signIn(email:String, password: String){
+        progressMsg?.show()
         auth?.signInWithEmailAndPassword(email,password)?.addOnCompleteListener {task ->
+            progressMsg?.dismiss()
             if(task.isSuccessful){
                 Toast.makeText(this,"Signed In Successfully",Toast.LENGTH_LONG).show()
                 gotoChat()
@@ -66,7 +75,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signUp(email:String, password:String){
+        progressMsg?.show()
         auth?.createUserWithEmailAndPassword(email,password)?.addOnCompleteListener {task ->
+            progressMsg?.dismiss()
             if(task.isSuccessful){
                 Toast.makeText(this,"Signed Up Successfully",Toast.LENGTH_LONG).show()
                 gotoChat()
