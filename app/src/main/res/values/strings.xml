@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">App2</string>
+    <string name="sign_in_heading">SIGN IN</string>
+    <string name="email_et_hint">Enter Your Email</string>
+    <string name="password_et_hint">Enter Your Password</string>
+    <string name="sign_in_btn">SIGN IN</string>
+    <string name="sign_up_btn">SIGN UP</string>
+    <string name="msg_box_hint">Enter Your Message</string>
+    <string name="send_btn_text">SEND</string>
+</resources>
